@@ -22,6 +22,14 @@ use App\Http\Controllers\ApiKeyController;
 //     return view('welcome');
 // });
 
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-migrate', function () {
+    Artisan::call('migrate');
+    return 'Migration success!';
+});
+
+
 //Tampilkan landing page
 Route::get('/', function() {
     return view('landing');
