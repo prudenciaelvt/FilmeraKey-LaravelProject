@@ -42,7 +42,7 @@ Berikut adalah daftar endpoint API yang tersedia dalam aplikasi **FilmeraKey**:
 > 📌 **Semua permintaan ke endpoint harus menyertakan API Key sebagai header otorisasi:**
 >
 > ```http
-> Authorization: Bearer {API_KEY}
+> Authorization: Bearer {X_API_KEY}
 > ```
 
 ---
