@@ -11,7 +11,7 @@
 
 ## 📌 Tentang Proyek
 
-**FilmeraKey** adalah aplikasi berbasis Laravel yang dirancang untuk menyediakan sistem pengelolaan data film melalui RESTful API, dengan dukungan API Key untuk otorisasi. Aplikasi ini juga memiliki antarmuka pengguna (UI) berbasis Blade untuk interaksi CRUD yang mudah digunakan.
+**FilmeraKey** adalah aplikasi berbasis Laravel yang dirancang untuk menyediakan sistem pengelolaan data film melalui RESTful API, dengan dukungan **API Key** untuk otorisasi. Aplikasi ini juga memiliki antarmuka pengguna (UI) berbasis Blade untuk interaksi CRUD yang mudah digunakan.
 
 ---
 
@@ -26,21 +26,44 @@
 
 ---
 
+## 🔌 API Endpoint
+
+Berikut adalah daftar endpoint API yang tersedia dalam aplikasi **FilmeraKey**:
+
+| Endpoint                      | Method | Deskripsi                           |
+|------------------------------|--------|-------------------------------------|
+| `/api/films`                 | GET    | Ambil semua data film               |
+| `/api/films/{id}`            | GET    | Ambil detail film berdasarkan ID    |
+| `/api/films`                 | POST   | Tambah film baru                    |
+| `/api/films/{id}`            | PUT    | Perbarui data film                  |
+| `/api/films/{id}`            | DELETE | Hapus film berdasarkan ID           |
+| `/api/films/search?q=judul` | GET    | Cari film berdasarkan judul         |
+
+> 📌 **Semua permintaan ke endpoint harus menyertakan API Key sebagai header otorisasi:**
+>
+> ```http
+> Authorization: Bearer {API_KEY}
+> ```
+
+---
+
 ## 🛠️ Teknologi yang Digunakan
 
 - Laravel 9.52.20
 - Blade Templating Engine
-- Laravel Validation & Routing
+- Laravel Routing & Validation
 - PHP 8.2.12
-- phpmyadmin
-- 
+- phpMyAdmin / MySQL
 
 ---
 
 ## 🚀 Instalasi dan Setup
 
 1. **Clone Repository**
+   ```bash
+   git clone https://github.com/prudenciaelvt/FilmeraKey-LaravelProject.git
+   cd FilmeraKey-LaravelProject
 
-```bash
-git clone https://github.com/prudenciaelvt/FilmeraKey-LaravelProject.git
-cd FilmeraKey-LaravelProject
+📬 Kontak
+Developer: @prudenciaelvt prudenciaputrii@gmail.com
+
