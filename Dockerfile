@@ -33,9 +33,6 @@ RUN cp .env.example .env && php artisan key:generate
 # Expose port 8000 to the outside
 EXPOSE 8000
 
-RUN php artisan migrate --force
-
-
 # Run Laravel server from the public directory
 CMD php artisan serve --host=0.0.0.0 --port=8000
 
