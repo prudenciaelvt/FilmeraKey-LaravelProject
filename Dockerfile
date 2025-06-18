@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
     libpq-dev \
+    nodejs \
+    npm \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
@@ -24,15 +26,19 @@ WORKDIR /var/www
 # Copy all project files to container
 COPY . .
 
-# Install PHP dependencies (Laravel)
+# Install dependencies
 RUN composer install --no-dev --optimize-autoloader
+RUN npm install
+RUN npm run build  # Jika menggunakan Laravel Mix/Vite
 
-# Copy example environment file and generate Laravel app key
-RUN cp .env.example .env && php artisan key:generate
+# Setup permissions
+RUN chown -R www-data:www-data /var/www/storage
+RUN chown -R www-data:www-data /var/www/bootstrap/cache
 
-# Expose port 8000 to the outside
+# Generate key and optimize
+RUN php artisan key:generate
+RUN php artisan optimize
+RUN php artisan storage:link  # Penting untuk asset linking
+
 EXPOSE 8000
-
-# Run Laravel server from the public directory
 CMD php artisan serve --host=0.0.0.0 --port=8000
-
