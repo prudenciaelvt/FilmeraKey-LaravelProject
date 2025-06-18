@@ -1,5 +1,5 @@
 FROM php:8.2-fpm
-ver 1
+#ver 1
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
