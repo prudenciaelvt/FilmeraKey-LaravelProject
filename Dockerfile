@@ -21,21 +21,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy project files
+# Copy all project files to container
 COPY . .
 
-# Install PHP dependencies
+# Install PHP dependencies (Laravel)
 RUN composer install --no-dev --optimize-autoloader
 
-# Copy Laravel env
-COPY .env.example .env
+# Copy example environment file and generate Laravel app key
+RUN cp .env.example .env && php artisan key:generate
 
-# Generate app key
-RUN php artisan key:generate
-
-## Expose port 8000
+# Expose port 8000 to the outside
 EXPOSE 8000
 
-# Start Laravel server
+# Run Laravel server from the public directory
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
-
